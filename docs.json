@@ -89,8 +89,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "https://isptriage.com/images/logo.png",
+    "dark": "https://isptriage.com/images/logo.png"
   },
   "navbar": {
     "links": [
