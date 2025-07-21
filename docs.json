@@ -1,9 +1,9 @@
 {
   "$schema": "https://docs.isptriage.com/docs.json",
-  "theme": "linden",
+  "theme": "aspen",
   "name": "ISP Triage Documentation",
   "colors": {
-    "primary": "#16A34A",
+    "primary": "#ff8927",
     "light": "#07C983",
     "dark": "#15803D"
   },
