@@ -23,25 +23,11 @@
           {
             "group": "Videos",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "videos/gis",
+              "videos/tickets",
+              "videos/installerday",
+              "videos/services",
+              "videos/networkmonitoring"
             ]
           }
         ]
@@ -70,19 +56,18 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hell@isptriage.com"
+        "href": "mailto:hello@isptriage.com"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://my.isptriage.com/"
     }
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/blue-integrations"
     }
   }
 }
