@@ -38,6 +38,12 @@
               "/RADIUS/Radius-Ubiquiti",
               "/RADIUS/Radius-miraki"
             ]
+          },
+           {
+            "group": "MODOBOA",
+            "pages": [
+              "/MODOBOA/server-settings"
+            ]
           }
         ]
       }
