@@ -1,0 +1,67 @@
+---
+title: "Radius - Miraki"
+description: "This markdown document includes a unified FreeRADIUS setup for MAC authentication from MikroTik, Cisco, Ubiquiti, and Meraki, including wired and wireless Meraki."
+---
+
+---
+
+## 1. Meraki Wired Switch MAC Authentication
+
+1. Go to **Dashboard → Network-wide → Access Policies → RADIUS Servers**.
+2. Add RADIUS server:
+   - IP: `rad01.vir.isptriage.com`
+   - Port: 1812 (Auth), 1813 (Acct)
+   - Secret: `YOURSECRET`
+   - NAS-Identifier: `companyA`
+3. Enable **MAC Authentication** on ports or port profiles.
+4. Optional: Assign VLAN per MAC-auth success.
+
+Meraki sends:
+
+```
+User-Name = MAC
+Calling-Station-Id = MAC
+NAS-Identifier = Switch Name
+NAS-Port-Type = Ethernet
+Service-Type = Login-User
+```
+
+---
+
+## 2. Meraki Wireless (AP) MAC Authentication
+
+1. Go to **Wireless → SSIDs → Edit → Access Control**.
+2. Select **Enterprise with RADIUS server**.
+3. Add RADIUS server:
+   - IP: `rad01.vir.isptriage.com`
+   - Port: 1812 / 1813
+   - Secret: `YOURSECRET`
+   - NAS-Identifier: `companyA`
+4. Enable **MAC Authentication for BYOD** (Optional).
+5. Optional: Assign VLAN.
+
+Meraki AP sends:
+
+```
+User-Name = MAC
+Calling-Station-Id = MAC
+NAS-Identifier = AP Name
+NAS-Port-Type = Wireless-802.11
+Service-Type = Login-User
+```
+
+---
+
+## 3. VLAN Assignment (Optional)
+
+FreeRADIUS can return VLAN info per MAC-authenticated client:
+
+```
+Tunnel-Type = VLAN
+Tunnel-Medium-Type = IEEE-802
+Tunnel-Private-Group-ID = 200
+```
+
+Switch/AP will assign the VLAN automatically.
+
+---
