@@ -15,3 +15,33 @@ add service=ppp,address=rad01.vir.isptriage.com secret=YourSecret \
 
 /ppp aaa set use-radius=yes accounting=yes
 ```
+
+**MAC-AUTH**
+
+```
+/radius
+add service=login address=rad01.vir.isptriage.com \
+    authentication-port=1812 accounting-port=1813 \
+    secret=YourSecret \
+    nas-identifier=companyA
+```
+
+**Ethernet**
+
+```
+/interface bridge
+set [find] vlan-filtering=yes
+
+/interface bridge port
+set [find] mac-authentication=yes \
+            mac-authentication-radius=yes \
+            mac-authentication-fallback=no
+```
+
+**Wireless**
+
+```
+/interface wireless security-profiles
+set [ find default=yes ] radius-mac-authentication=yes
+set [ find default=yes ] radius-mac-format=XX:XX:XX:XX:XX:XX
+```
