@@ -32,11 +32,11 @@
            {
             "group": "RADIUS",
             "pages": [
-              "radius/radius-settings",
-              "radius/radius-mikrotik",
-              "radius/radius-cisco",
-              "radius/radius-ubiquiti",
-              "radius/radius-miraki"
+              "/RADIUS/Radius-Settings",
+              "/RADIUS/Radius-Mikrotik",
+              "/RADIUS/Radius-Cisco",
+              "/RADIUS/Radius-Ubiquiti",
+              "/RADIUS/Radius-miraki"
             ]
           }
         ]
