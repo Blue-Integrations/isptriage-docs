@@ -1,0 +1,52 @@
+---
+title: "Radius - Cisco"
+description: "Cisco howto, for MAC auth"
+---
+
+Here is a basic configuration to get MAC auth functional using our radius services.
+
+```
+aaa new-model
+
+aaa authentication dot1x default group radius
+aaa authorization network default group radius
+aaa accounting update periodic 5
+
+aaa authentication login default group radius local
+```
+
+Enable RADIUS:
+
+```
+radius-server host rad01.vir.isptriage.com auth-port 1812 acct-port 1813 key YOURSECRET
+radius-server retransmit 3
+radius-server timeout 5
+radius-server deadtime 10
+```
+
+Add company identifier
+
+```
+hostname CompanyA-SW1
+radius-server attribute 32 include-in-access-req
+```
+
+Per port auth
+
+```
+interface GigabitEthernet1/0/1
+ switchport mode access
+ authentication enable
+ mab
+ authentication host-mode multi-auth
+ authentication order mab
+ authentication priority mab
+ authentication port-control auto
+ spanning-tree portfast
+```
+
+Enable port auth globally
+
+```
+dot1x system-auth-control
+```
