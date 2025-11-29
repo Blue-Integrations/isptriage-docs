@@ -1,0 +1,17 @@
+---
+title: "RADIUS - Mikrotik"
+description: "Mikrotik settings for communicating with our mutli-tenant radius server"
+---
+
+Setting up Mikrotik to point towards our RADIUS server, please enter the following parameters into your pppoe server, or MAC Auth.
+
+**PPPOE**
+
+```
+/radius
+add service=ppp,address=rad01.vir.isptriage.com secret=YourSecret \
+    authentication-port=1812 accounting-port=1813 \
+    nas-identifier=companyA
+
+/ppp aaa set use-radius=yes accounting=yes
+```
