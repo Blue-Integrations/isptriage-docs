@@ -1,0 +1,54 @@
+---
+title: "Radius - Ubiquiti "
+description: "This guide explains how to set up MAC Authentication Bypass (MAB) for Ubiquiti switches, EdgeRouters, and UniFi controllers with FreeRADIUS, including multi-tenant support and optional VLAN assignment."
+---
+
+---
+
+## 1. UniFi Controller MAC Auth Setup
+
+1. Go to **Settings → Profiles → RADIUS**.
+2. Create a RADIUS profile:
+   - RADIUS server: `rad01.vir.isptriage.com`
+   - Auth Port: 1812
+   - Acct Port: 1813
+   - Secret: `YOURSECRET`
+   - NAS-Identifier: `companyA` (optional)
+3. Assign this profile to a **Wired Network** and enable **MAC Authentication**.
+
+---
+
+## 2. EdgeSwitch / EdgeRouter MAC Auth CLI
+
+```bash
+configure
+set system login radius-server 10.0.10.1 secret YOURSECRET
+set system login radius-server 10.0.10.1 auth-port 1812 acct-port 1813
+set system login radius-server 10.0.10.1 nas-identifier companyA
+commit
+save
+exit
+```
+
+Enable MAC-auth on ports:
+
+```bash
+configure
+interface ethernet eth1
+set authentication mac-based radius-server 10.0.10.1
+commit
+save
+exit
+```
+
+---
+
+## 7. Optional: VLAN Assignment via RADIUS
+
+Ubiquiti supports:
+
+- `Tunnel-Type = VLAN`
+- `Tunnel-Medium-Type = IEEE-802`
+- `Tunnel-Private-Group-ID = <vlan_id>`
+
+FreeRADIUS can reply with VLAN attributes to automatically assign client ports.
