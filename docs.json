@@ -28,8 +28,8 @@
               "videos/services",
               "videos/networkmonitoring"
             ]
-          }
-                    {
+          },
+           {
             "group": "RADIUS",
             "pages": [
               "radius/radius-settings",
