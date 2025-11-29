@@ -29,6 +29,16 @@
               "videos/networkmonitoring"
             ]
           }
+                    {
+            "group": "RADIUS",
+            "pages": [
+              "radius/radius-settings",
+              "radius/radius-mikrotik",
+              "radius/radius-cisco",
+              "radius/radius-ubiquiti",
+              "videos/networkmonitoring"
+            ]
+          }
         ]
       }
     ],
