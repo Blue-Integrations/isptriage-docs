@@ -14,10 +14,10 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Automations",
             "pages": [
               "index",
-              "billing"
+              "billing
             ]
           },
           {
