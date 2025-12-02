@@ -20,6 +20,15 @@
             ]
           },
           {
+        "tab": "Billing",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "billing"
+            ]
+          },
+          {
             "group": "Videos",
             "pages": [
               "videos/gis",
