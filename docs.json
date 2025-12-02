@@ -16,15 +16,7 @@
           {
             "group": "Getting started",
             "pages": [
-              "index"
-            ]
-          },
-          {
-        "tab": "Billing",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": [
+              "index",
               "billing"
             ]
           },
