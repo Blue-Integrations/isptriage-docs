@@ -21,7 +21,7 @@ add service=ppp address=rad01.vir.isptriage.com secret=YourSecret \
 
 ```
 /radius
-add service=login address=rad01.vir.isptriage.com \
+add service=dot1x address=rad01.vir.isptriage.com \
     authentication-port=1812 accounting-port=1813 \
     secret=YourSecret \
     nas-identifier=companyA
