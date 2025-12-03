@@ -27,7 +27,9 @@ add service=dot1x address=rad01.vir.isptriage.com \
     nas-identifier=companyA
 
 /interface bridge add name=bridge1
-/interface bridge port add interface=ether7
+/interface bridge port add bridge=bridge1 interface=ether6 comment=uplink
+/interface bridge port add bridge=bridge1 interface=ether7
+add bridge=bridge1 tagged=ether6 vlan-ids=2,3,4
 
 /interface dot1x server
     add auth-types=mac-auth interface=ether7 \
