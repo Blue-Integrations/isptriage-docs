@@ -9,11 +9,12 @@ Setting up Mikrotik to point towards our RADIUS server, please enter the followi
 
 ```
 /radius
-add service=ppp,address=rad01.vir.isptriage.com secret=YourSecret \
+add service=ppp address=rad01.vir.isptriage.com secret=YourSecret \
     authentication-port=1812 accounting-port=1813 \
-    nas-identifier=companyA
+    realm=companyA.com
 
-/ppp aaa set use-radius=yes accounting=yes
+/ppp aaa
+    set accounting=yes use-radius=yes
 ```
 
 **MAC-AUTH**
