@@ -5,7 +5,7 @@ description: "Mikrotik settings for communicating with our mutli-tenant radius s
 
 Setting up Mikrotik to point towards our RADIUS server, please enter the following parameters into your pppoe server, or MAC Auth.
 
-**PPPOE**
+**PPPoE**
 
 ```
 /radius
@@ -17,7 +17,7 @@ add service=ppp address=rad01.vir.isptriage.com secret=YourSecret \
     set accounting=yes use-radius=yes
 ```
 
-**MAC-AUTH**
+**dot1x MAC-AUTH**
 
 ```
 /radius
@@ -25,18 +25,14 @@ add service=login address=rad01.vir.isptriage.com \
     authentication-port=1812 accounting-port=1813 \
     secret=YourSecret \
     nas-identifier=companyA
-```
 
-**Ethernet**
+/interface bridge add name=bridge1
+/interface bridge port add interface=ether7
 
-```
-/interface bridge
-set [find] vlan-filtering=yes
-
-/interface bridge port
-set [find] mac-authentication=yes \
-            mac-authentication-radius=yes \
-            mac-authentication-fallback=no
+/interface dot1x server
+    add auth-types=mac-auth interface=ether7 \
+    mac-auth-mode=mac-as-username-and-password \
+    radius-mac-format=XX-XX-XX-XX-XX-XX
 ```
 
 **Wireless**
