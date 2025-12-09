@@ -37,7 +37,8 @@
               "/RADIUS/Radius-Mikrotik",
               "/RADIUS/Radius-Cisco",
               "/RADIUS/Radius-Ubiquiti",
-              "/RADIUS/Radius-Meraki"
+              "/RADIUS/Radius-Meraki",
+              "/RADIUS/Radius-Cambium"
             ]
           },
            {
