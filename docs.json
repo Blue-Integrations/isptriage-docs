@@ -39,12 +39,9 @@
             "pages": [
               "videos/gis",
               "videos/tickets",
-              {
-                "group": "MODOBOA",
-                "pages": [
-                  "/MODOBOA/server-settings"
-                ]
-              },
+              "videos/installerday",
+              "videos/services",
+              "videos/networkmonitoring",
               {
                 "group": "RADIUS",
                 "pages": [
@@ -56,9 +53,12 @@
                   "/RADIUS/Radius-Cambium"
                 ]
               },
-              "videos/installerday",
-              "videos/services",
-              "videos/networkmonitoring"
+              {
+                "group": "MODOBOA",
+                "pages": [
+                  "/MODOBOA/server-settings"
+                ]
+              }
             ]
           }
         ]
