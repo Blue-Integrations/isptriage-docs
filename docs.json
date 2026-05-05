@@ -9,6 +9,20 @@
   },
   "favicon": "",
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Community",
+          "icon": "discord",
+          "href": "https://discord.gg/HNynM3AM"
+        },
+        {
+          "anchor": "Blog",
+          "icon": "newspaper",
+          "href": "https://isptriage.com/blog.html"
+        }
+      ]
+    },
     "tabs": [
       {
         "tab": "Guides",
@@ -25,45 +39,31 @@
             "pages": [
               "videos/gis",
               "videos/tickets",
+              {
+                "group": "MODOBOA",
+                "pages": [
+                  "/MODOBOA/server-settings"
+                ]
+              },
+              {
+                "group": "RADIUS",
+                "pages": [
+                  "/RADIUS/Radius-Settings",
+                  "/RADIUS/Radius-Mikrotik",
+                  "/RADIUS/Radius-Cisco",
+                  "/RADIUS/Radius-Ubiquiti",
+                  "/RADIUS/Radius-Meraki",
+                  "/RADIUS/Radius-Cambium"
+                ]
+              },
               "videos/installerday",
               "videos/services",
               "videos/networkmonitoring"
             ]
-          },
-           {
-            "group": "RADIUS",
-            "pages": [
-              "/RADIUS/Radius-Settings",
-              "/RADIUS/Radius-Mikrotik",
-              "/RADIUS/Radius-Cisco",
-              "/RADIUS/Radius-Ubiquiti",
-              "/RADIUS/Radius-Meraki",
-              "/RADIUS/Radius-Cambium"
-            ]
-          },
-           {
-            "group": "MODOBOA",
-            "pages": [
-              "/MODOBOA/server-settings"
-            ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Community",
-          "href": "https://discord.gg/HNynM3AM",
-          "icon": "discord"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://isptriage.com/blog.html",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "https://isptriage.com/images/new-logo.png",
