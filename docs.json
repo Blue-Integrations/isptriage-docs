@@ -1,13 +1,18 @@
 {
-  "$schema": "https://docs.isptriage.com/docs.json",
+  "$schema": "https://mintlify.com/docs.json",
   "theme": "aspen",
   "name": "ISP Triage Documentation",
+  "description": "User guide and integrations for the ISP Triage operations platform",
+  "logo": {
+    "light": "https://isptriage.com/images/new-logo.png",
+    "dark": "https://isptriage.com/images/new-logo.png"
+  },
+  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#ff8927",
     "light": "#07C983",
     "dark": "#15803D"
   },
-  "favicon": "",
   "navigation": {
     "global": {
       "anchors": [
@@ -28,46 +33,97 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Automations",
+            "group": "Get Started",
             "pages": [
-              "index",
-              "billing"
+              "introduction",
+              "quickstart",
+              "navigation-and-roles",
+              "isptriage-docs/index"
             ]
           },
           {
-            "group": "Videos",
+            "group": "Dashboard & AI",
             "pages": [
-              "videos/gis",
-              "videos/tickets",
-              "videos/installerday",
-              "videos/services",
-              "videos/networkmonitoring",
-              {
-                "group": "RADIUS",
-                "pages": [
-                  "/RADIUS/Radius-Settings",
-                  "/RADIUS/Radius-Mikrotik",
-                  "/RADIUS/Radius-Cisco",
-                  "/RADIUS/Radius-Ubiquiti",
-                  "/RADIUS/Radius-Meraki",
-                  "/RADIUS/Radius-Cambium"
-                ]
-              },
-              {
-                "group": "MODOBOA",
-                "pages": [
-                  "/MODOBOA/server-settings"
-                ]
-              }
+              "dashboard",
+              "ai-assistant"
+            ]
+          },
+          {
+            "group": "Billing",
+            "pages": [
+              "billing/overview",
+              "billing/invoices-payments",
+              "billing/reporting",
+              "isptriage-docs/billing"
+            ]
+          },
+          {
+            "group": "Customers & Sales",
+            "pages": [
+              "clients-and-leads"
+            ]
+          },
+          {
+            "group": "Support",
+            "pages": [
+              "support/tickets",
+              "support/outages"
+            ]
+          },
+          {
+            "group": "Network",
+            "pages": [
+              "network/radius",
+              "network/vendor-controllers",
+              "network/gis",
+              "network/monitoring"
+            ]
+          },
+          {
+            "group": "RADIUS integrations",
+            "pages": [
+              "isptriage-docs/RADIUS/Radius-Settings",
+              "isptriage-docs/RADIUS/Radius-Mikrotik",
+              "isptriage-docs/RADIUS/Radius-Cisco",
+              "isptriage-docs/RADIUS/Radius-Ubiquiti",
+              "isptriage-docs/RADIUS/Radius-Meraki",
+              "isptriage-docs/RADIUS/Radius-Cambium"
+            ]
+          },
+          {
+            "group": "Scheduling",
+            "pages": [
+              "scheduling/plan-install",
+              "scheduling/calendar-projects"
+            ]
+          },
+          {
+            "group": "Communications",
+            "pages": [
+              "communications/email-dns-voip",
+              "isptriage-docs/MODOBOA/server-settings"
+            ]
+          },
+          {
+            "group": "Company admin",
+            "pages": [
+              "company/preferences",
+              "company/crm-import"
+            ]
+          },
+          {
+            "group": "Video guides",
+            "pages": [
+              "isptriage-docs/videos/gis",
+              "isptriage-docs/videos/tickets",
+              "isptriage-docs/videos/installerday",
+              "isptriage-docs/videos/services",
+              "isptriage-docs/videos/networkmonitoring"
             ]
           }
         ]
       }
     ]
-  },
-  "logo": {
-    "light": "https://isptriage.com/images/new-logo.png",
-    "dark": "https://isptriage.com/images/new-logo.png"
   },
   "navbar": {
     "links": [
