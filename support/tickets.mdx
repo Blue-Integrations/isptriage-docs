@@ -1,0 +1,66 @@
+---
+title: Tickets
+description: Support tickets, replies, metrics, and email ingest
+---
+
+## Ticket list
+
+**Support → Tickets** (or **Tickets** in the Support submenu) shows all company tickets.
+
+Filter by status, assignee, client, or priority. Use **Metrics** for volume and response-time summaries.
+
+## Ticket lifecycle
+
+| Status | Typical meaning |
+|--------|-----------------|
+| Open | Awaiting staff or customer |
+| In progress | Assigned and being worked |
+| Closed | Resolved |
+
+### Create a ticket (staff)
+
+1. Tickets → **Create**
+2. Select client (or internal ticket if allowed)
+3. Enter subject, description, priority
+4. Assign to user or queue
+
+Clients create tickets from their portal with a simpler form.
+
+## Working a ticket
+
+On the ticket detail page:
+
+- **Reply** — Public message to customer (visible in portal)
+- **Internal note** — Staff-only if your workflow supports it
+- **Take ownership** — Assign yourself
+- **Close** — Mark resolved
+
+### AI-drafted replies
+
+Use **Generate response** to draft a reply from the ticket description and latest customer message. Edit before sending. See [AI assistant](/ai-assistant).
+
+## Email-to-ticket
+
+When configured under **Company → Preferences → Email**, inbound messages to a support mailbox create or update tickets.
+
+- Map IMAP/SMTP accounts per company
+- Parser matches sender to client when possible
+- Staff replies may send outbound through the configured SMTP identity
+
+<Warning>
+Verify email account credentials and test with a non-production message before go-live—misconfigured ingest can create duplicate tickets.
+</Warning>
+
+## Client portal tickets
+
+Clients see only their tickets. They can add replies but cannot access internal notes or other customers' tickets.
+
+## Metrics
+
+**Tickets → Metrics** provides charts and tables for:
+
+- Volume by period
+- Per-user stats
+- Backlog trends
+
+Use for standups and SLA review.

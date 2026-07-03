@@ -1,0 +1,47 @@
+---
+title: Outage management
+description: Planned maintenance and outage notifications
+---
+
+**Support → Outage management** sends bulk notifications to affected customers.
+
+## When to use
+
+- Planned maintenance windows
+- Unplanned network outages
+- Service degradation affecting a defined area or customer set
+
+## Send a notification
+
+<Steps>
+  <Step title="Open Outage management">
+    Support → Outage management.
+  </Step>
+  <Step title="Compose message">
+    Enter subject and body. Use clear start/end times and impact description.
+  </Step>
+  <Step title="Choose audience">
+    Select clients by criteria (e.g. service area, tag, or list)—options depend on your form.
+  </Step>
+  <Step title="Send">
+    Confirm and send. Email uses company mail settings.
+  </Step>
+</Steps>
+
+<Tip>
+Prepare a template for common outage types (fiber cut, tower maintenance, DNS issue) so NOC can send faster under pressure.
+</Tip>
+
+## Planned maintenance template
+
+Email templates may include branded planned-maintenance layouts. Coordinate message wording with support so customer replies route to tickets if needed.
+
+## After the outage
+
+- Post a follow-up or close related tickets
+- Update ticket subjects if customers reply to the outage email
+- Document root cause in a project or internal note for postmortem
+
+<Note>
+Delivery depends on valid client email addresses and working `MAIL_*` configuration on the server.
+</Note>
