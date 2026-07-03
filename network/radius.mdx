@@ -1,0 +1,67 @@
+---
+title: RADIUS
+description: Users, groups, NAS, bundles, sessions, and CoA
+---
+
+**Company → Network → RADIUS** is the hub for authentication and accounting.
+
+## Concepts
+
+| Item | Purpose |
+|------|---------|
+| **RADIUS user** | Subscriber login (PPPoE, hotspot, etc.) |
+| **Group** | Shared attributes applied to many users |
+| **Attribute bundle** | Reusable reply/check attribute sets (bandwidth, timeouts) |
+| **NAS** | Network Access Server (router, BNG, AP) that talks to RADIUS |
+| **Accounting** | Session start/stop and usage records |
+
+## Users
+
+**RADIUS → Users**
+
+- Create username/password (or MAC auth where used)
+- Assign groups and bundles for speed limits and session policy
+- Suspend user—may sync to MikroTik PPPoE or address-lists when integrated
+- View **live sessions** when NAS is linked to a vendor controller
+
+### MikroTik integration
+
+When a NAS is linked to a MikroTik controller, user pages may show:
+
+- Active PPPoE or hotspot session
+- Queue stats
+- Actions: disconnect (CoA), sync PPPoE secret, block by IP
+
+## Groups & bundles
+
+- **Groups** — Apply bundle references to many users
+- **Bundles** — Define `Mikrotik-Rate-Limit`, `Session-Timeout`, Cambium VSAs, etc.
+
+Use the **burst calculator** (Company → Network) to build MikroTik rate strings.
+
+## NAS devices
+
+**RADIUS → NAS**
+
+- Add NAS IP/hostname and **shared secret**
+- Enable **CoA** (Change of Authorization) port for live disconnect/bandwidth changes
+- **Link vendor controller** for session lookup and push config to router
+
+## Accounting & usage
+
+Session history and usage reports help with troubleshooting and capacity planning. Daily usage tables may feed dashboards or AI context.
+
+## CoA / disconnect
+
+From user or session views, send **Disconnect** or bandwidth **CoA** to terminate or reshape live sessions (RFC 5176; NAS must support CoA).
+
+<Warning>
+Wrong NAS secret or CoA port causes silent failures—verify on a test user before production cutover.
+</Warning>
+
+## Vendor-specific notes
+
+- **MikroTik** — `Mikrotik-Rate-Limit` format; REST push for RADIUS client and PPPoE
+- **Cambium** — Motorola Canopy VSAs for UL/DL bandwidth
+
+See also [Vendor controllers](/network/vendor-controllers) for router-side management.

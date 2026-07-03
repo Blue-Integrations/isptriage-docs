@@ -1,0 +1,65 @@
+---
+title: Email, DNS & VoIP
+description: Hosted email, DNS domains, FSPBX, and Thirdlane
+---
+
+Under **Company** (and related menus), ISP Triage integrates communications stacks.
+
+## DNS
+
+**Company → DNS** (or DNS menu)
+
+- Manage zones on connected PowerDNS (or configured backend)
+- Edit A, AAAA, CNAME, MX, TXT records
+- NS records use company nameserver hostnames from configuration
+
+Use for customer domains and infrastructure DNS.
+
+## Email
+
+**Company → Email**
+
+- Email domains and mailboxes (Modoboa or integrated provider)
+- Aliases and accounts per domain
+- Display **mail server hostname** for customer MX/IMAP/SMTP settings (from `ISP_EMAIL_MAIL_SERVER`)
+
+Sync features may pull account state from the mail server API.
+
+## VoIP — FSPBX
+
+When enabled in **Company → Preferences → VoIP**:
+
+**Company → FSPBX** (or VoIP menu)
+
+- Select FSPBX server connection
+- Domains, extensions, devices, ring groups
+- Voicemail, active calls, registrations
+
+Configure server URL and API token in Preferences before use.
+
+## VoIP — Thirdlane
+
+When Thirdlane is enabled in Preferences:
+
+**Company → Thirdlane**
+
+- Manage Thirdlane PBX integration per company server entries
+
+## Preferences: VoIP tab
+
+**Company → Preferences → VoIP**
+
+- Enable/disable FSPBX and Thirdlane
+- Add multiple servers per provider
+- Store API tokens (encrypted) and SSL verify options
+
+<Tip>
+Complete VoIP server setup in Preferences first—the FSPBX/Thirdlane menus list only enabled, configured servers.
+</Tip>
+
+## Outbound mail vs hosted mail
+
+- **Hosted mail** (Email menu) — customer mailboxes on your platform
+- **Application mail** (`MAIL_*` in server `.env`) — outage emails, invoice email, system notifications
+
+These are separate configurations.

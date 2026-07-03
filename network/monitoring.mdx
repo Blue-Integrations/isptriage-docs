@@ -1,0 +1,46 @@
+---
+title: Monitoring
+description: Host monitoring, agents, and status dashboards
+---
+
+**Company → Network → Monitoring** shows reachability and latency for monitored hosts.
+
+## Monitored hosts
+
+Add hosts by IP or hostname:
+
+- CPE, routers, core devices, DNS, billing servers
+- Configure check interval and alert thresholds per deployment
+
+## Monitoring agents
+
+Optional **Python agents** run on customer premises or POP sites and report metrics to ISP Triage.
+
+Typical setup:
+
+1. Download agent script from your ISP Triage server
+2. Run with agent ID and token provided by admin
+3. Install as systemd service for persistence
+
+Agents complement ping checks with richer data where implemented.
+
+## Dashboard
+
+The monitoring dashboard summarizes:
+
+- Up / down status
+- Recent latency
+- Problem hosts for NOC review
+
+## AI assistant integration
+
+Staff can ask the AI assistant about **ping latency** or host status by name when monitoring data is in context.
+
+## Related tools
+
+- **Vendor controllers** — live device stats from MikroTik/UniFi/Cambium
+- **LibreQoS / QoE** — per-subscriber quality scores (Company → Preferences → QoE)
+
+<Warning>
+Monitoring alerts are not a substitute for SNMP/trap systems at very large scale—use ISP Triage monitoring for operational visibility alongside your NMS.
+</Warning>

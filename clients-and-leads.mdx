@@ -1,0 +1,60 @@
+---
+title: Clients & leads
+description: Customer records, leads, and inventory
+---
+
+## Clients (billing accounts)
+
+A **client** is the central record for a subscriber or business customer.
+
+### Client record includes
+
+- Contact name, email, phone
+- Service and billing addresses
+- Linked portal user (optional)
+- Billing profile and active services
+- Invoices, payments, tickets (tabs or linked pages)
+- RADIUS user linkage and network context where provisioned
+
+### Common tasks
+
+<Steps>
+  <Step title="Create client">
+    Billing → Clients → Add. Enter minimum contact and address fields.
+  </Step>
+  <Step title="Assign services">
+    Add service templates with start date and pricing overrides if needed.
+  </Step>
+  <Step title="Enable portal access">
+    Create or link a user with **client** role and same company.
+  </Step>
+  <Step title="Provision network">
+    Create RADIUS user, PPPoE secret, or queue from integrated workflows.
+  </Step>
+</Steps>
+
+### Search and open
+
+Use **Search** or Billing → Clients filter to find by name, email, phone, or account ID.
+
+## Leads
+
+**Leads** (when enabled) tracks prospects before conversion to paying clients.
+
+Typical flow:
+
+1. Capture lead from sales or web form
+2. Qualify and assign
+3. Convert to **client** when they sign up—carry over address and notes where supported
+
+## Inventory
+
+**Inventory items** (when enabled) supports tracking CPE, routers, and stock used on installs. Link items to truck rolls or projects as your process requires.
+
+<Info>
+Leads and inventory availability depends on company configuration. If you do not see these menus, they may be disabled for your deployment.
+</Info>
+
+## CRM import
+
+Bulk customer data can be imported from external systems under **Company → Preferences → Import**. See [CRM import](/company/crm-import) for supported providers and run steps.

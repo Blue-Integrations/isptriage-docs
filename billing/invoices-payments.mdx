@@ -1,0 +1,82 @@
+---
+title: Invoices & payments
+description: Creating invoices, recording payments, and Stripe integration
+---
+
+## Invoices
+
+### List and filter
+
+**Billing → Invoices** shows all company invoices. Filter by status (draft, sent, paid, overdue), client, or date range.
+
+### Create an invoice
+
+<Steps>
+  <Step title="Open create form">
+    Use **Billing → Invoices → Create** or the quick-action menu (+).
+  </Step>
+  <Step title="Select client">
+    Choose the customer; billing profile and tax settings apply automatically.
+  </Step>
+  <Step title="Add line items">
+    Pull from active services or add one-time charges.
+  </Step>
+  <Step title="Send or save">
+    Save as draft, mark sent, or email PDF to the client depending on workflow.
+  </Step>
+</Steps>
+
+### Invoice PDF
+
+Download PDF from the invoice detail page (staff or client portal). Branding follows company preferences.
+
+### Invoice statuses
+
+| Status | Meaning |
+|--------|---------|
+| Draft | Not finalized |
+| Sent / Open | Owed by customer |
+| Paid | Fully satisfied |
+| Overdue | Past due date |
+| Void / written off | No longer collectible (see Write Offs) |
+
+## Payments
+
+**Billing → Payments** lists payment history.
+
+### Record a manual payment
+
+1. Open **Payments** or client billing tab.
+2. Choose invoice(s) and amount.
+3. Set method (check, cash, transfer, etc.) and date.
+
+### Stripe card payments
+
+Clients can:
+
+- Add a card via **setup intent** in the portal
+- Pay individual invoices or use auto-pay on billing day
+
+Staff can trigger setup flows from the client billing profile where enabled.
+
+### Failed transactions
+
+When Stripe charges fail, entries appear under **Failed Transactions**. Review, retry, or contact the customer.
+
+<Warning>
+Always verify payment amounts and invoice allocation before marking large manual payments—errors affect AR reports.
+</Warning>
+
+## Taxes and fees
+
+Tax classes and invoice fees are configured at company level. Client billing profiles may assign a default tax class. Line items show tax breakdown on PDFs where configured.
+
+## Quick actions
+
+The top-nav **+** menu shortcuts:
+
+- New client
+- New invoice
+- Payments list
+
+Use these for fast data entry during phone support.

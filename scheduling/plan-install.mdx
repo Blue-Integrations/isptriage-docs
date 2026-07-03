@@ -1,0 +1,52 @@
+---
+title: Plan install & field work
+description: Planned installs, installer days, and work orders
+---
+
+Field scheduling centers on **Plan Install** and related installer-day workflows.
+
+## Plan install
+
+**Support → Plan Install** (or Scheduling submenu) lists upcoming customer installations.
+
+### Typical workflow
+
+<Steps>
+  <Step title="Schedule install">
+    Create planned install with client, address, date, and service details.
+  </Step>
+  <Step title="Geocode address">
+    Map pin uses geocoding (LocationIQ / Nominatim / AWS per company config).
+  </Step>
+  <Step title="Assign crew">
+    Link installer day or technician as your process defines.
+  </Step>
+  <Step title="Complete">
+    Mark complete; may trigger billing or provisioning steps.
+  </Step>
+</Steps>
+
+Calendar and map views help dispatch see density by day and region.
+
+## Installer days
+
+**Installer day** groups multiple installs for one crew on one date:
+
+- View route-friendly list or map
+- **Work orders** — per-job checklist for techs
+
+## Truck rolls
+
+Truck roll records tie field visits to clients and tickets—use for truck charge billing or SLA tracking where enabled.
+
+## Dashboard integration
+
+Home dashboard **install** cards show today's count and upcoming installs—click through to Plan Install.
+
+<Tip>
+Enter complete service addresses for accurate geocoding; bad addresses skew dispatch maps.
+</Tip>
+
+## Projects link
+
+Large builds (tower work, fiber builds) may also use **Projects** for multi-day work tracking alongside single install records.

@@ -1,0 +1,65 @@
+---
+title: Navigation & roles
+description: User roles, permissions, and how menus differ
+---
+
+## User roles
+
+| Role | Typical access |
+|------|----------------|
+| **Admin** | Full company settings, billing admin, users, preferences |
+| **Staff** | Day-to-day operations; may exclude some admin-only pages |
+| **Field tech** | Installs, tickets, limited billing/network views |
+| **Client** | Portal only: own invoices, tickets, profile |
+
+Your administrator assigns roles when creating users under **Company → Users**.
+
+## Superadmin (platform operator)
+
+Users marked as superadmin can:
+
+- View the list of companies
+- **View as** another company to troubleshoot without a separate login
+
+When viewing as another company, a banner appears at the top—use **Exit view** to return to normal context.
+
+## Billing menu (staff)
+
+When you have billing access, the **Billing** dropdown includes:
+
+- Dashboard, Clients, Invoices, Payments
+- Failed Transactions, Write Offs
+- **Reporting** — MRR, ARR, revenue by service type, taxes, churn/revenue loss, aging
+- Service Templates
+- HR-related entries where enabled
+
+## Company menu
+
+The **Company** dropdown groups operational tools:
+
+### Network
+- **Burst calculator** — MikroTik-style burst limit helper
+- **Monitoring** — Host status and agents
+- **RADIUS** — Users, groups, NAS, bundles, accounting
+- **GIS** — Network map and infrastructure
+
+### Other company items
+- **Users** — Staff accounts
+- **Preferences** — Company-wide configuration tabs
+- **Leads** / **Inventory** — When enabled for your deployment
+
+## Network Management
+
+Reach vendor controllers via **Network Management** (hub) or **Vendor Controllers**:
+
+- Add MikroTik, Ubiquiti UniFi, or Cambium cnMaestro controllers
+- Manage devices, PPPoE, firewall, UniFi clients, Cambium SMs, etc.
+- Link controllers to RADIUS NAS records
+
+## Search
+
+Global **Search** (where enabled) finds clients, tickets, and related records across the company.
+
+<Info>
+If a menu item is missing, your role may not include that permission, or the feature may be disabled in company preferences.
+</Info>

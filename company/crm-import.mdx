@@ -1,0 +1,80 @@
+---
+title: CRM import
+description: Import customers from Sonar, BillMax, UISP, and other systems
+---
+
+**Company → Preferences → Import** configures connections to external CRM and billing platforms.
+
+## Supported providers
+
+Enable and configure each source independently:
+
+| Provider | Typical use |
+|----------|-------------|
+| Sonar | ISP billing/CRM |
+| Splynx | ISP management |
+| Powercode | Billing |
+| Swift Fox | Operations |
+| BillMax | ISP billing REST API |
+| Invoice Ninja | Invoicing |
+| UISP | Ubiquiti ISP platform |
+| Gaiia | Modern ISP OSS/BSS |
+
+## Configure a source
+
+<Steps>
+  <Step title="Enable provider">
+    Check the enable box for the system you use.
+  </Step>
+  <Step title="Enter API credentials">
+    URL, API key, username/password as required. Secrets are encrypted when saved.
+  </Step>
+  <Step title="SSL options">
+    Toggle verify SSL for self-signed remote APIs.
+  </Step>
+  <Step title="Save">
+    Save the Import tab settings.
+  </Step>
+</Steps>
+
+Leave API key fields blank on update to **keep existing** stored secrets.
+
+## Run an import
+
+From the Import tab **run** section:
+
+1. Choose provider from dropdown (only enabled sources appear)
+2. Optional filters depending on provider
+3. Run import
+
+Imports create or update:
+
+- Clients and billing profiles
+- Services mapped from remote plans
+- Metadata for reconciliation (external IDs)
+
+<Tip>
+Run a small test import or dry-run in staging before full production migration.
+</Tip>
+
+## Scheduled imports
+
+Server cron may run imports via Artisan command—ask your administrator for schedule and logging.
+
+## After import
+
+- Reconcile duplicate clients manually if sources overlapped
+- Verify service templates mapped correctly
+- Spot-check invoices and RADIUS users before cutover
+
+<Warning>
+Imports can overwrite client fields when re-run. Understand merge behavior for your provider before scheduling recurring jobs.
+</Warning>
+
+## Command line (operators)
+
+```bash
+php artisan crm:import {provider} --company={id}
+```
+
+Providers: `sonar`, `splynx`, `powercode`, `swiftfox`, `billmax`, `invoiceninja`, `uisp`, `gaiia`.

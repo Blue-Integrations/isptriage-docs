@@ -1,0 +1,66 @@
+---
+title: Billing overview
+description: Clients, profiles, services, and billing workflows
+---
+
+The **Billing** area is for staff with billing permissions. It covers the customer financial lifecycle from service assignment through invoicing and collections.
+
+## Core concepts
+
+| Term | Meaning |
+|------|---------|
+| **Client** | A customer account (may link to a portal user) |
+| **Billing profile** | Payment terms, Stripe customer, tax settings per client |
+| **Service** | A subscribed service from a **service template** (speed tier, price, billing cycle) |
+| **Invoice** | Bill for a period; line items from services and fees |
+| **Payment** | Recorded payment (manual or Stripe auto-pay) |
+
+## Billing dashboard
+
+Start at **Billing → Dashboard** for receivables summary, recent activity, and shortcuts.
+
+## Clients
+
+**Billing → Clients** lists all customer accounts.
+
+Typical workflows:
+
+- **Add client** — Create account, contact info, service address
+- **Billing profile** — Set billing day, payment method, tax class
+- **Services** — Attach or change service templates (plan changes)
+- **Suspend / activate** — May integrate with RADIUS and network policies
+
+Use client detail pages as the hub for invoices, payments, tickets, and network context.
+
+## Service templates
+
+**Billing → Service Templates** define reusable plans:
+
+- Recurring price and billing interval (monthly, quarterly, annual)
+- Descriptions shown on invoices
+- Attributes used for reporting (service type)
+
+Assign templates when adding or changing client services.
+
+## Automation (background)
+
+Scheduled jobs (server cron) commonly handle:
+
+- **Invoice generation** on billing day
+- **Auto-pay** via Stripe for clients with stored payment methods
+- **Overdue** status updates
+
+<Note>
+Automation must be enabled and cron configured on the server. See your administrator or `BILLING_AUTOMATION.md` in the repo for ops detail.
+</Note>
+
+## Failed transactions & write-offs
+
+- **Failed Transactions** — Stripe or payment failures needing follow-up
+- **Write Offs** — Bad debt and adjustment workflows
+
+## Client portal
+
+Clients with portal access see **Billing →** (their view): invoices, download PDF, add payment method, pay outstanding balance.
+
+Staff actions in admin billing do not require the client to be logged in.

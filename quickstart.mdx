@@ -1,0 +1,68 @@
+---
+title: Quickstart
+description: First login, layout, and essential setup
+---
+
+## Log in
+
+1. Open your ISP Triage URL (provided by your administrator).
+2. Sign in with your staff email and password.
+3. After login you land on your **home dashboard** (configurable under user preferences).
+
+<Tip>
+Use the theme toggle in the top navigation to switch light/dark mode. Your choice is saved to your user profile.
+</Tip>
+
+## Main navigation
+
+The top bar is organized by role:
+
+- **Home** — Dashboard
+- **Billing** — Admin billing (staff with billing access)
+- **Support** — Tickets and related tools (context varies by role)
+- **Company** — Dropdown with Network, Preferences, Users, and more
+- **Quick actions** (+) — Shortcuts to create clients, invoices, payments
+
+Breadcrumbs under the nav show where you are: **Home → section → page**.
+
+## First-time company setup
+
+Administrators should configure **Company → Preferences**:
+
+<Steps>
+  <Step title="General">
+    Set company name, timezone, branding (logo/background), and internal links.
+  </Step>
+  <Step title="VoIP">
+    Enable FSPBX and/or Thirdlane servers if you use integrated VoIP.
+  </Step>
+  <Step title="QoE">
+    Add LibreQoS endpoints for quality-of-experience monitoring.
+  </Step>
+  <Step title="Import">
+    Connect CRM/billing sources (Sonar, BillMax, UISP, etc.) if migrating data.
+  </Step>
+  <Step title="Email">
+    Configure inbound ticket email accounts if using email-to-ticket.
+  </Step>
+</Steps>
+
+## User preferences
+
+Click your name (top right) → **Preferences** to set:
+
+- Default login page (which dashboard opens after sign-in)
+- Color theme template
+- Other personal settings
+
+## Client portal
+
+End customers use the same URL with **client** role accounts. They see:
+
+- Their invoices and payment methods
+- Support tickets they opened
+- A simplified dashboard
+
+<Warning>
+Client accounts do not have access to the internal AI assistant or admin billing tools.
+</Warning>

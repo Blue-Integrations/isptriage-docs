@@ -1,0 +1,77 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "ISP Triage",
+  "description": "User guide for the ISP Triage operations platform",
+  "colors": {
+    "primary": "#4F46E5",
+    "light": "#6366F1",
+    "dark": "#4338CA"
+  },
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction",
+        "quickstart",
+        "navigation-and-roles"
+      ]
+    },
+    {
+      "group": "Dashboard & AI",
+      "pages": [
+        "dashboard",
+        "ai-assistant"
+      ]
+    },
+    {
+      "group": "Billing",
+      "pages": [
+        "billing/overview",
+        "billing/invoices-payments",
+        "billing/reporting"
+      ]
+    },
+    {
+      "group": "Customers & Sales",
+      "pages": [
+        "clients-and-leads"
+      ]
+    },
+    {
+      "group": "Support",
+      "pages": [
+        "support/tickets",
+        "support/outages"
+      ]
+    },
+    {
+      "group": "Network",
+      "pages": [
+        "network/radius",
+        "network/vendor-controllers",
+        "network/gis",
+        "network/monitoring"
+      ]
+    },
+    {
+      "group": "Scheduling",
+      "pages": [
+        "scheduling/plan-install",
+        "scheduling/calendar-projects"
+      ]
+    },
+    {
+      "group": "Communications",
+      "pages": [
+        "communications/email-dns-voip"
+      ]
+    },
+    {
+      "group": "Company Admin",
+      "pages": [
+        "company/preferences",
+        "company/crm-import"
+      ]
+    }
+  ]
+}

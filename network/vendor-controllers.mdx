@@ -1,0 +1,71 @@
+---
+title: Vendor network controllers
+description: MikroTik, UniFi, and Cambium management
+---
+
+Manage routers and controllers under **Network Management → Vendor Controllers**.
+
+## Add a controller
+
+1. **Vendor Controllers → Add**
+2. Pick vendor card: **MikroTik**, **Ubiquiti UniFi**, or **Cambium**
+3. Enter connection details and save
+4. Use **Test** on the controller page to verify connectivity
+
+Credentials are encrypted at rest. If you see "password not set," open **Edit** and re-save the password.
+
+## MikroTik (RouterOS REST v7+)
+
+### Connection settings
+
+| Setting | Guidance |
+|---------|----------|
+| Host | Router IP or hostname |
+| Port | **80** (HTTP / `www`) or **443** (HTTPS / `www-ssl`) |
+| Use HTTPS | On for 443; **off** for plain HTTP ports (e.g. 8081) |
+| Verify SSL certificate | Uncheck for self-signed/LAN certs |
+
+<Warning>
+Ports **8728** and **8729** are the **binary** API—not HTTP REST. REST uses `www` / `www-ssl` only.
+</Warning>
+
+Enable on router: **IP → Services → www** or **www-ssl**.
+
+### Tabs (overview)
+
+Overview, interfaces, IP, DHCP, queues, firewall, PPPoE, wireless clients, hotspot, ARP, routes, log, RADIUS integration.
+
+### RADIUS tab
+
+Register as NAS, push RADIUS server config, block/unblock subscriber IPs, sync PPPoE secrets.
+
+## Ubiquiti UniFi
+
+Enter full **controller URL** including port:
+
+- UniFi OS (UDM, Dream Machine): `https://192.168.1.1` (443)
+- Classic controller: `https://host:8443`
+
+Use a **local admin** account—not Ubiquiti cloud SSO for self-hosted.
+
+**Site** field: almost always `default`; correct key appears on Overview after first connect. Wrong site keys auto-correct when possible.
+
+Tabs: devices, switch ports, clients, SSIDs, networks/VLANs, firewall, events, firmware, RADIUS.
+
+## Cambium cnMaestro
+
+OAuth2 **client ID** and **client secret** from cnMaestro API clients.
+
+Tabs: devices, subscriber modules (signal/throughput), access points, RADIUS.
+
+## SSL and troubleshooting
+
+| Error | Fix |
+|-------|-----|
+| TLS handshake failure | Wrong port type; use 80/443 for REST |
+| Wrong version number | HTTPS checked but port is HTTP—uncheck Use HTTPS |
+| Password decrypt failed | `APP_KEY` changed—re-enter credentials in Edit |
+
+## Link to RADIUS
+
+On controller **Overview → RADIUS**, register as NAS or link existing NAS for live session data and orchestration.

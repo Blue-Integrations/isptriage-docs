@@ -1,0 +1,46 @@
+---
+title: GIS mapping
+description: Network maps, layers, and infrastructure features
+---
+
+**Company → Network → GIS** opens the interactive map for your company's network infrastructure.
+
+## Map basics
+
+- Pan and zoom on OpenStreetMap or configured base layers
+- Draw and edit features: fiber links, wireless links, copper, access points, hand holes, poles, coverage areas
+- Click features for details and documentation links
+
+## Feature types
+
+| Type | Use |
+|------|-----|
+| Network links | Fiber, wireless, copper runs between sites |
+| Access points | Tower and AP locations |
+| Hand holes / poles | Physical plant |
+| Coverage areas | Service polygons |
+| Distribution hubs | Aggregation points |
+
+## Company map center
+
+Administrators set default map center and zoom so staff land in the right region. Update via GIS settings or API if exposed in your deployment.
+
+## Import / export
+
+**KML import/export** supports bringing legacy GIS data in or sharing with external tools.
+
+## Public embed
+
+Some deployments expose a **tokenized embed URL** for read-only maps on external sites—tokens are company-scoped and unauthenticated.
+
+<Tip>
+Keep layer naming consistent (e.g. `fiber-2024-backbone`) so search and filters stay usable as the network grows.
+</Tip>
+
+## Hand hole documentation
+
+Linked documentation on hand holes may store photos, splice notes, and asset IDs for field techs.
+
+<Note>
+GIS uses OpenLayers in the browser. Performance is best with hundreds—not tens of thousands—of features per view; split by region if needed.
+</Note>
