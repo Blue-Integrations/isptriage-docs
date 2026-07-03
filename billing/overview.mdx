@@ -1,6 +1,6 @@
 ---
-title: Billing overview
-description: Clients, profiles, services, and billing workflows
+title: "Billing overview"
+description: "Clients, profiles, services, and billing workflows"
 ---
 
 The **Billing** area is for staff with billing permissions. It covers the customer financial lifecycle from service assignment through invoicing and collections.
@@ -8,7 +8,7 @@ The **Billing** area is for staff with billing permissions. It covers the custom
 ## Core concepts
 
 | Term | Meaning |
-|------|---------|
+| --- | --- |
 | **Client** | A customer account (may link to a portal user) |
 | **Billing profile** | Payment terms, Stripe customer, tax settings per client |
 | **Service** | A subscribed service from a **service template** (speed tier, price, billing cycle) |
@@ -49,10 +49,6 @@ Scheduled jobs (server cron) commonly handle:
 - **Invoice generation** on billing day
 - **Auto-pay** via Stripe for clients with stored payment methods
 - **Overdue** status updates
-
-<Note>
-Automation must be enabled and cron configured on the server. See your administrator or `BILLING_AUTOMATION.md` in the repo for ops detail.
-</Note>
 
 ## Failed transactions & write-offs
 
