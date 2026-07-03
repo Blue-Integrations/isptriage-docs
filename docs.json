@@ -82,12 +82,12 @@
           {
             "group": "RADIUS integrations",
             "pages": [
-              "isptriage-docs/RADIUS/Radius-Settings",
-              "isptriage-docs/RADIUS/Radius-Mikrotik",
-              "isptriage-docs/RADIUS/Radius-Cisco",
-              "isptriage-docs/RADIUS/Radius-Ubiquiti",
-              "isptriage-docs/RADIUS/Radius-Meraki",
-              "isptriage-docs/RADIUS/Radius-Cambium"
+              "RADIUS/Radius-Settings",
+              "RADIUS/Radius-Mikrotik",
+              "RADIUS/Radius-Cisco",
+              "RADIUS/Radius-Ubiquiti",
+              "RADIUS/Radius-Meraki",
+              "RADIUS/Radius-Cambium"
             ]
           },
           {
@@ -114,11 +114,11 @@
           {
             "group": "Video guides",
             "pages": [
-              "isptriage-docs/videos/gis",
-              "isptriage-docs/videos/tickets",
-              "isptriage-docs/videos/installerday",
-              "isptriage-docs/videos/services",
-              "isptriage-docs/videos/networkmonitoring"
+              "videos/gis",
+              "videos/tickets",
+              "videos/installerday",
+              "videos/services",
+              "videos/networkmonitoring"
             ]
           }
         ]
