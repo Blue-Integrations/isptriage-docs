@@ -1,0 +1,282 @@
+---
+title: "Radius - Cambium"
+description: "A Description of your new file."
+---
+
+# Adding Certificate Authority to Cambium PMP450
+
+This guide explains how to add a Certificate Authority (CA) certificate to Cambium PMP450 devices for RADIUS certificate-based authentication.
+
+## Overview
+
+To enable certificate-based authentication on Cambium PMP450 devices, you need to:
+
+1. **Upload the CA Certificate** - So the device trusts certificates signed by your CA
+2. **Generate a Device Certificate** - Create a certificate for the specific PMP450 device
+3. **Upload the Device Certificate** - Install the device certificate on the PMP450
+
+## Prerequisites
+
+- A Certificate Authority (CA) must be created in the system
+- Access to the Cambium PMP450 web interface or CLI
+- Admin permissions in the RADIUS management system
+
+## Step 1: Download the CA Certificate
+
+### Via Web Interface
+
+1. Navigate to **RADIUS → Certificates → Certificate Authority**
+2. Click on your CA to view details
+3. In the **Download** section, click **"Download Certificate (PEM)"**
+   - For some firmware versions, you may need **DER** format instead
+4. Save the file (e.g., `ca_certificate.pem`)
+
+### File Format
+
+- **PEM format** (`.pem`, `.crt`) - Most common, text-based format
+- **DER format** (`.der`, `.cer`) - Binary format, may be required for some firmware versions
+
+## Step 2: Upload CA Certificate to Cambium PMP450
+
+### Method 1: Web Interface (Recommended)
+
+1. Log into the PMP450 web interface
+2. Navigate to **Configuration → Security → Certificates**
+   - Path may vary by firmware version:
+     - `Configuration → Security → Trusted CA Certificates`
+     - `System → Security → CA Certificates`
+     - `Network → Security → Certificates`
+3. Click **Upload** or **Import** button
+4. Select the downloaded CA certificate file (`ca_certificate.pem`)
+5. Click **Apply** or **Save**
+6. Wait for the upload to complete and verify the CA appears in the trusted CA list
+
+### Method 2: CLI (SSH/Telnet)
+
+```bash
+# Connect to the PMP450 via SSH or Telnet
+ssh admin@<pmp450-ip-address>
+
+# Copy the CA certificate to the device (using SCP)
+scp ca_certificate.pem admin@<pmp450-ip-address>:/tmp/
+
+# Then import via CLI (firmware version dependent)
+# Example commands (verify with your firmware version):
+configure
+security
+ca-certificate import /tmp/ca_certificate.pem
+commit
+exit
+```
+
+**Note:** CLI commands vary by firmware version. Consult your Cambium PMP450 documentation for exact commands.
+
+## Step 3: Generate Device Certificate
+
+### Create Certificate for PMP450
+
+1. Navigate to **RADIUS → NAS Devices**
+2. Find and select your PMP450 device
+3. Click **"Generate Certificate"** or go to the certificate management section
+4. **Important:** Select a **Cambium-Compliant** template if available
+   - Ensures 2048-bit key size
+   - Uses SHA-256 signature algorithm
+   - Sets Organization to "Cambium"
+5. Fill in certificate details:
+   - **Common Name**: Device MAC address or NAS name
+   - **Subject Alternative Names**: Include device IP, MAC, and hostname
+6. Click **Generate**
+
+### Certificate Requirements for Cambium PMP450
+
+- **Key Size**: 2048-bit minimum (4096-bit not supported by older firmware)
+- **Signature Algorithm**: SHA-256 (recommended) or SHA-1 (legacy only)
+- **Organization**: Should be "Cambium" for compatibility
+- **Format**: PKCS#12 (.p12/.pfx) with PBE-SHA1-3DES encryption
+
+## Step 4: Download Device Certificate (PKCS#12)
+
+1. Navigate to the certificate details page
+2. In the **Download** section, find **"PKCS#12 (Full Chain)"**
+3. Click **"Download PKCS#12 (.p12)"**
+4. Save the file (e.g., `pmp450_device.p12`)
+
+### PKCS#12 File Contents
+
+The downloaded `.p12` file contains:
+- Device certificate
+- Device private key
+- Full CA certificate chain (intermediate + root if applicable)
+
+### Password
+
+The PKCS#12 file is encrypted with a password. This password is configured in:
+- **RADIUS → Settings → PKCS#12 Export Password**
+
+**Important:** Save this password - you'll need it when uploading to the PMP450.
+
+## Step 5: Upload Device Certificate to PMP450
+
+### Via Web Interface
+
+1. Log into the PMP450 web interface
+2. Navigate to **Configuration → Security → Certificates**
+3. Find **"Client Certificate"** or **"Device Certificate"** section
+4. Click **Upload** or **Import**
+5. Select the downloaded `.p12` file
+6. Enter the PKCS#12 password when prompted
+7. Click **Apply** or **Save**
+8. Verify the certificate is installed and shows as valid
+
+### Certificate Validation
+
+After upload, verify:
+- Certificate shows as **Valid**
+- Certificate expiration date is correct
+- Certificate issuer matches your CA
+- Certificate Common Name matches the device
+
+## Step 6: Configure RADIUS Authentication
+
+### Enable Certificate-Based Authentication
+
+1. In PMP450 web interface, navigate to **Configuration → Security → RADIUS**
+2. Configure RADIUS server settings:
+   - **RADIUS Server IP**: Your FreeRADIUS server
+   - **RADIUS Port**: 1812 (authentication)
+   - **Shared Secret**: Your RADIUS shared secret
+3. Enable **Certificate Authentication** or **EAP-TLS**
+4. Select the uploaded device certificate
+5. Apply changes
+
+### RADIUS Server Configuration
+
+Ensure your FreeRADIUS server is configured to:
+- Accept certificate-based authentication
+- Trust certificates signed by your CA
+- Validate certificate Common Name or Subject Alternative Names
+
+## Troubleshooting
+
+### CA Certificate Not Accepted
+
+**Symptoms:**
+- CA upload fails
+- CA shows as invalid
+- Device doesn't trust certificates
+
+**Solutions:**
+- Verify CA certificate format (PEM vs DER)
+- Check CA certificate is not expired
+- Ensure CA certificate is complete (includes full chain if intermediate CA exists)
+- Try DER format if PEM doesn't work
+- Check firmware version compatibility
+
+### Device Certificate Not Working
+
+**Symptoms:**
+- Certificate uploads but shows as invalid
+- RADIUS authentication fails
+- Certificate not recognized by device
+
+**Solutions:**
+- Verify certificate was signed by the trusted CA
+- Check certificate Common Name matches device identifier
+- Ensure PKCS#12 password is correct
+- Verify certificate is not expired
+- Check certificate key size (2048-bit minimum)
+- Ensure PBE-SHA1-3DES encryption was used (system does this automatically)
+
+### PKCS#12 Import Fails
+
+**Symptoms:**
+- Cannot import .p12 file
+- Password error
+- Format error
+
+**Solutions:**
+- Verify password is correct (check RADIUS Settings)
+- Ensure file is not corrupted (re-download)
+- Check firmware version supports PKCS#12 import
+- Try regenerating certificate with Cambium-compliant template
+- Verify file extension is `.p12` or `.pfx`
+
+### RADIUS Authentication Fails
+
+**Symptoms:**
+- Certificate installed but RADIUS fails
+- Connection rejected
+
+**Solutions:**
+- Verify RADIUS server trusts your CA
+- Check certificate Common Name matches RADIUS user configuration
+- Verify Subject Alternative Names include device identifiers
+- Check RADIUS server logs for specific errors
+- Ensure RADIUS server has access to CA certificate for validation
+
+## Cambium PMP450 Compatibility Notes
+
+### Firmware Versions
+
+- **Older firmware** (pre-14.x): May require SHA-1 signatures (not recommended)
+- **Firmware 14.x+**: Supports SHA-256 (recommended)
+- **Latest firmware**: Full support for modern certificate standards
+
+### Certificate Format Requirements
+
+- **CA Certificate**: PEM or DER format
+- **Device Certificate**: PKCS#12 (.p12/.pfx) with PBE-SHA1-3DES encryption
+- **Key Size**: 2048-bit minimum (4096-bit may not be supported)
+- **Signature**: SHA-256 recommended, SHA-1 for legacy only
+
+### System Compatibility Features
+
+The system automatically:
+- Uses **PBE-SHA1-3DES encryption** for PKCS#12 export (required for Cambium)
+- Includes full certificate chain in PKCS#12 file
+- Generates Cambium-compliant certificates when using Cambium template
+- Sets Organization to "Cambium" for compatibility
+
+## Best Practices
+
+1. **Use Cambium-Compliant Templates**: Ensures compatibility with all PMP450 firmware versions
+2. **Document Passwords**: Keep PKCS#12 passwords secure but accessible
+3. **Monitor Expiration**: Set up alerts for certificate expiration
+4. **Test First**: Test certificate upload on one device before deploying to all
+5. **Backup Certificates**: Keep backups of CA and device certificates
+6. **Version Control**: Document firmware versions and certificate requirements
+
+## Related Documentation
+
+- [RADIUS Certificate Integrations](./RADIUS_CERTIFICATE_INTEGRATIONS.md) - System integration details
+- Cambium PMP450 User Guide - Device-specific documentation
+- FreeRADIUS Documentation - Server configuration
+
+## Support
+
+For issues with:
+- **System certificate generation**: Check RADIUS Certificate settings
+- **Device configuration**: Consult Cambium PMP450 documentation
+- **RADIUS authentication**: Review FreeRADIUS server logs
+
+## Quick Reference
+
+### Download CA Certificate
+```
+RADIUS → Certificates → Certificate Authority → [Your CA] → Download Certificate (PEM)
+```
+
+### Generate Device Certificate
+```
+RADIUS → NAS Devices → [Your PMP450] → Generate Certificate → Use Cambium Template
+```
+
+### Download Device Certificate
+```
+RADIUS → NAS Devices → [Your PMP450] → Certificates → [Certificate] → Download PKCS#12
+```
+
+### Upload to PMP450
+```
+PMP450 Web Interface → Configuration → Security → Certificates → Upload
+```

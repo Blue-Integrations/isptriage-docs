@@ -1,0 +1,46 @@
+---
+title: "Radius - Mikrotik"
+description: "Mikrotik settings for communicating with our mutli-tenant radius server"
+---
+
+Setting up Mikrotik to point towards our RADIUS server, please enter the following parameters into your pppoe server, or MAC Auth.
+
+**PPPoE**
+
+```
+/radius
+add service=ppp address=rad01.vir.isptriage.com secret=YourSecret \
+    authentication-port=1812 accounting-port=1813 \
+    realm=companyA.com
+
+/ppp aaa
+    set accounting=yes use-radius=yes
+```
+
+**dot1x MAC-AUTH**
+
+```
+/radius
+add service=dot1x address=rad01.vir.isptriage.com \
+    authentication-port=1812 accounting-port=1813 \
+    secret=YourSecret \
+    nas-identifier=companyA
+
+/interface bridge add name=bridge1
+/interface bridge port add bridge=bridge1 interface=ether6 comment=uplink
+/interface bridge port add bridge=bridge1 interface=ether7
+add bridge=bridge1 tagged=ether6 vlan-ids=2,3,4
+
+/interface dot1x server
+    add auth-types=mac-auth interface=ether7 \
+    mac-auth-mode=mac-as-username-and-password \
+    radius-mac-format=XX-XX-XX-XX-XX-XX
+```
+
+**Wireless**
+
+```
+/interface wireless security-profiles
+set [ find default=yes ] radius-mac-authentication=yes
+set [ find default=yes ] radius-mac-format=XX-XX-XX-XX-XX-XX
+```

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://docs.isptriage.com/docs.json",
+  "theme": "aspen",
+  "name": "ISP Triage Documentation",
+  "colors": {
+    "primary": "#ff8927",
+    "light": "#07C983",
+    "dark": "#15803D"
+  },
+  "favicon": "",
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Community",
+          "icon": "discord",
+          "href": "https://discord.gg/HNynM3AM"
+        },
+        {
+          "anchor": "Blog",
+          "icon": "newspaper",
+          "href": "https://isptriage.com/blog.html"
+        }
+      ]
+    },
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Automations",
+            "pages": [
+              "index",
+              "billing"
+            ]
+          },
+          {
+            "group": "Videos",
+            "pages": [
+              "videos/gis",
+              "videos/tickets",
+              "videos/installerday",
+              "videos/services",
+              "videos/networkmonitoring",
+              {
+                "group": "RADIUS",
+                "pages": [
+                  "/RADIUS/Radius-Settings",
+                  "/RADIUS/Radius-Mikrotik",
+                  "/RADIUS/Radius-Cisco",
+                  "/RADIUS/Radius-Ubiquiti",
+                  "/RADIUS/Radius-Meraki",
+                  "/RADIUS/Radius-Cambium"
+                ]
+              },
+              {
+                "group": "MODOBOA",
+                "pages": [
+                  "/MODOBOA/server-settings"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "https://isptriage.com/images/new-logo.png",
+    "dark": "https://isptriage.com/images/new-logo.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:hello@isptriage.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://my.isptriage.com/"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/blue-integrations"
+    }
+  }
+}
