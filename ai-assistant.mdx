@@ -1,6 +1,6 @@
 ---
-title: AI assistant
-description: Internal chat assistant and AI-drafted ticket replies
+title: "AI assistant"
+description: "Internal chat assistant and AI-drafted ticket replies"
 ---
 
 ISP Triage includes an **AI assistant** for staff (not available to client portal users). It helps answer questions about clients, tickets, RADIUS, monitoring, and QoE—using context from your company data.
@@ -23,7 +23,7 @@ Examples of supported intents:
 - Include **LibreQoS / QoE** metrics when a client is in context
 
 <Warning>
-The assistant performs sensitive actions (send invoice, create ticket) only when your message clearly requests them and a client is identified. Always review AI output before sending to customers.
+  The assistant performs sensitive actions (send invoice, create ticket) only when your message clearly requests them and a client is identified. Always review AI output before sending to customers.
 </Warning>
 
 ## Ticket reply drafting
@@ -33,43 +33,6 @@ On a ticket detail page:
 1. Click **Generate response** (or equivalent AI control).
 2. The system sends the ticket description and latest customer message to the configured AI provider.
 3. Review and edit the draft before posting as a staff reply.
-
-## Provider configuration (administrators)
-
-AI is configured in the server `.env` file—not in the web UI.
-
-| Provider | When to use |
-|----------|-------------|
-| **Ollama** | Self-hosted or LAN LLM (`OLLAMA_URL`) |
-| **xAI Grok** | Cloud API (`XAI_API_KEY`) |
-
-Set `AI_PROVIDER` to `ollama` or `xai`. Optional `AI_FALLBACK_PROVIDER` tries a second provider if the first fails.
-
-<AccordionGroup>
-  <Accordion title="Example: Ollama only">
-    ```env
-    AI_PROVIDER=ollama
-    OLLAMA_URL=http://127.0.0.1:11434
-    OLLAMA_MODEL=llama3.2:latest
-    ```
-  </Accordion>
-  <Accordion title="Example: xAI with Ollama fallback">
-    ```env
-    AI_PROVIDER=xai
-    AI_FALLBACK_PROVIDER=ollama
-    XAI_API_KEY=your-key
-    XAI_MODEL=grok-3-latest
-    OLLAMA_URL=http://127.0.0.1:11434
-    ```
-  </Accordion>
-</AccordionGroup>
-
-After changing environment variables, run `php artisan config:clear` on the server.
-
-### Test endpoints (staff, while logged in)
-
-- `/ai-test` — tests active provider
-- `/ai-test?provider=xai` or `?provider=ollama` — tests a specific provider
 
 ## Tips for better answers
 

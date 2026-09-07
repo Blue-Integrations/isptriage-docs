@@ -1,6 +1,6 @@
 ---
-title: CRM import
-description: Import customers from Sonar, BillMax, UISP, and other systems
+title: "CRM import"
+description: "Import customers from Sonar, BillMax, UISP, and other systems"
 ---
 
 **Company → Preferences → Import** configures connections to external CRM and billing platforms.
@@ -10,7 +10,7 @@ description: Import customers from Sonar, BillMax, UISP, and other systems
 Enable and configure each source independently:
 
 | Provider | Typical use |
-|----------|-------------|
+| --- | --- |
 | Sonar | ISP billing/CRM |
 | Splynx | ISP management |
 | Powercode | Billing |
@@ -54,7 +54,7 @@ Imports create or update:
 - Metadata for reconciliation (external IDs)
 
 <Tip>
-Run a small test import or dry-run in staging before full production migration.
+  Run a small test import or dry-run in staging before full production migration.
 </Tip>
 
 ## Scheduled imports
@@ -66,15 +66,3 @@ Server cron may run imports via Artisan command—ask your administrator for sch
 - Reconcile duplicate clients manually if sources overlapped
 - Verify service templates mapped correctly
 - Spot-check invoices and RADIUS users before cutover
-
-<Warning>
-Imports can overwrite client fields when re-run. Understand merge behavior for your provider before scheduling recurring jobs.
-</Warning>
-
-## Command line (operators)
-
-```bash
-php artisan crm:import {provider} --company={id}
-```
-
-Providers: `sonar`, `splynx`, `powercode`, `swiftfox`, `billmax`, `invoiceninja`, `uisp`, `gaiia`.

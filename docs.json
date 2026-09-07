@@ -52,8 +52,7 @@
             "pages": [
               "billing/overview",
               "billing/invoices-payments",
-              "billing/reporting",
-              "isptriage-docs/billing"
+              "billing/reporting"
             ]
           },
           {
@@ -100,8 +99,7 @@
           {
             "group": "Communications",
             "pages": [
-              "communications/email-dns-voip",
-              "isptriage-docs/MODOBOA/server-settings"
+              "communications/email-dns-voip"
             ]
           },
           {
