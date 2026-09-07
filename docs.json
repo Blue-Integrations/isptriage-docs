@@ -75,6 +75,7 @@
               "network/radius",
               "network/vendor-controllers",
               "network/gis",
+              "network/bdc-reporting",
               "network/monitoring"
             ]
           },

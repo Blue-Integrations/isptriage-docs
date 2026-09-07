@@ -1,0 +1,54 @@
+---
+title: BDC reporting
+description: Set up FCC Broadband Data Collection coverage, subscribers, and filings
+---
+
+**Company → GIS & Mapping → BDC Reporting** is ISP Triage's FCC Broadband Data Collection workspace. It is available only for companies located in the **United States**.
+
+<Note>
+If BDC does not appear in the menu, set **Company → Preferences → Country** to United States (or USA). ISP Triage also accepts a US state code when country is blank.
+</Note>
+
+## What you will record
+
+| Record | Purpose |
+|--------|---------|
+| **Deployment sites** | Towers, buildings, and other build locations |
+| **Service areas** | Coverage polygons, technology, speed tier, households passed/served |
+| **Subscribers** | Locations in those areas, ACP and low-income flags |
+| **Reports** | Period snapshots and FCC/coverage CSV exports |
+
+## Setup steps
+
+<Steps>
+  <Step title="Confirm the company is in the US">
+    Open **Company → Preferences** and set country to United States. BDC tools stay hidden for Canadian and other non-US companies.
+  </Step>
+  <Step title="Add deployment sites">
+    Under **BDC Reporting**, add each site with name, type, address, county, latitude/longitude, and status (planned, in progress, completed, or on hold). Optional census tract and block group improve later exports.
+  </Step>
+  <Step title="Define service areas">
+    Create a service area for each coverage polygon: technology (fiber, fixed wireless, cable, DSL, satellite), speed tier (for example `100/20`), households passed and served, service available date, GeoJSON polygon, and FCC-qualified when it meets filing criteria. Link the area to a deployment site when it is served from one.
+  </Step>
+  <Step title="Add subscribers and geocode">
+    Attach subscribers to a service area with address, coordinates, tier, and start date. Flag ACP and low-income qualification when they apply. Use **bulk import** from billing clients or the **geocode wizard** so addresses appear on the coverage map.
+  </Step>
+  <Step title="Review the coverage map">
+    **BDC Map** shows geocoded billing clients against service areas and sites. Fix missing coordinates before you generate a filing.
+  </Step>
+  <Step title="Generate and file a report">
+    Create a quarterly, annual, or ad hoc snapshot for a date range. Export **FCC**, **coverage**, **subscriber**, or **summary** CSVs, then mark the report submitted with destination (FCC or a state office) and date.
+  </Step>
+</Steps>
+
+<Tip>
+Run the same report type on a consistent calendar (for example each quarter’s last day) so take rate and households passed stay comparable period to period.
+</Tip>
+
+## Live dashboard
+
+The BDC dashboard shows current take rate, FCC-qualified areas, ACP / low-income counts, and technology and tier breakdowns. Generate a report to freeze those numbers for a filing period.
+
+## Official FCC resources
+
+- [FCC Broadband Data Collection](https://www.fcc.gov/BroadbandData)
